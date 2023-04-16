@@ -1,0 +1,30 @@
+live_config_reload: true
+
+window:
+  padding:
+    x: 5
+    y: 5
+  dynamic_title: true
+  decorations_theme_variant: None
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: "Monaco Nerd Font"
+  size: 14
+
+draw_bold_text_with_bright_colors: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: Off
+  blink_interval: 750
+  blink_timeout: 5
+  unfocused_hollow: true
