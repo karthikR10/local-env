@@ -14,6 +14,14 @@ alias "update-kubeconfig"="aws eks --region us-west-2 update-kubeconfig --name d
 
 alias ll="ls -lah"
 
+alias gst="git status"
+alias gco="git checkout"
+alias gcm="git commit -m"
+alias gpl="git pull"
+
+# lazygit alias
+alias lg="lazygit"
+
 alias k="kubectl"
 alias kgp="k get pods -o wide"
 alias kgn="k get nodes -o wide"
