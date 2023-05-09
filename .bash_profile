@@ -7,6 +7,9 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH="$GOPATH/bin:$PATH"
 
+# RUST
+source "$HOME/.cargo/env"
+
 alias wekube="~/Documents/go/src/weguard/tooling/wekube/bin/wekube_macos"
 
 alias wecloud="~/Documents/go/src/weguard/weguard-eks-cluster/run.sh"
@@ -14,6 +17,7 @@ alias "update-kubeconfig"="aws eks --region us-west-2 update-kubeconfig --name d
 
 alias ll="ls -lah"
 
+alias glo="git log --oneline --decorate"
 alias gst="git status"
 alias gco="git checkout"
 alias gcm="git commit -m"
@@ -48,11 +52,11 @@ eval "$(github-copilot-cli alias -- "$0")"
 # PS1='$(kube_ps1)'$PS1
 
 validateYaml() {
-    python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+    python3 -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
 
 
-## zoxide setup 
+## zoxide setup
 #  =============================================================================
 #
 # Utility functions for zoxide.
@@ -171,3 +175,4 @@ eval "$(zoxide init zsh)"
 
 eval "$(starship init zsh)"
 
+. "$HOME/.cargo/env"
