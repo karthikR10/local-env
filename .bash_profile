@@ -10,7 +10,7 @@ export PATH="$GOPATH/bin:$PATH"
 # RUST
 source "$HOME/.cargo/env"
 
-alias wekube="~/Documents/go/src/weguard/tooling/wekube/bin/wekube_macos"
+alias wekube="~/Documents/go/src/weguard/wekube/bin/wekube_macos"
 
 alias wecloud="~/Documents/go/src/weguard/weguard-eks-cluster/run.sh"
 alias "update-kubeconfig"="aws eks --region us-west-2 update-kubeconfig --name dev-weguard-eks-cluster"
@@ -21,7 +21,8 @@ alias glo="git log --oneline --decorate"
 alias gst="git status"
 alias gco="git checkout"
 alias gcm="git commit -m"
-alias gpl="git pull"
+alias gpl="git pull origin"
+alias gps="git push origin"
 
 # lazygit alias
 alias lg="lazygit"
@@ -39,6 +40,48 @@ alias kcx="kubie ctx"
 alias pod-check="kgp -A -o wide | grep -v Running | grep -v Comp"
 alias pod-count="kgp -A | wc -l"
 
+
+function awsprofile() {
+  if [[ -z "$1" ]]; then
+    unset AWS_PROFILE
+    echo "AWS_PROFILE cleared"
+  else
+    export AWS_PROFILE=$1
+    echo "AWS_PROFILE set to $AWS_PROFILE"
+  fi
+}
+
+function helm_encrypt_dev_uswest2() {
+  helm secrets encrypt ./helm-charts/environment/secrets/dev/values.yaml > ./helm-charts/environment/secrets/dev/values-enc.yaml
+}
+
+function helm_decrypt_dev_uswest2() {
+  helm secrets decrypt ./helm-charts/environment/secrets/dev/values-enc.yaml > ./helm-charts/environment/secrets/dev/values.yaml
+}
+
+function helm_encrypt_dev_apsouth2() {
+  helm secrets encrypt ./helm-charts/environment/secrets/dev-ap-south-2/values.yaml > ./helm-charts/environment/secrets/dev-ap-south-2/values-enc.yaml
+}
+
+function helm_decrypt_dev_apsouth2() {
+  helm secrets decrypt ./helm-charts/environment/secrets/dev-ap-south-2/values-enc.yaml > ./helm-charts/environment/secrets/dev-ap-south-2/values.yaml
+}
+
+function helm_encrypt_qa_uswest2() {
+  helm secrets encrypt ./helm-charts/environment/secrets/qa/values.yaml > ./helm-charts/environment/secrets/qa/values-enc.yaml
+}
+
+function helm_decrypt_qa_uswest2() {
+  helm secrets decrypt ./helm-charts/environment/secrets/qa/values-enc.yaml > ./helm-charts/environment/secrets/qa/values.yaml
+}
+
+function helm_encrypt_qa_apsouth2() {
+  helm secrets encrypt ./helm-charts/environment/secrets/qa-ap-south-2/values.yaml > ./helm-charts/environment/secrets/qa-ap-south-2/values-enc.yaml
+}
+
+function helm_decrypt_qa_apsouth2() {
+  helm secrets decrypt ./helm-charts/environment/secrets/qa-ap-south-2/values-enc.yaml > ./helm-charts/environment/secrets/qa-ap-south-2/values.yaml
+}
 
 complete -C /usr/local/bin/terraform terraform
 
