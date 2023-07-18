@@ -21,8 +21,8 @@ alias glo="git log --oneline --decorate"
 alias gst="git status"
 alias gco="git checkout"
 alias gcm="git commit -m"
-alias gpl="git pull origin"
-alias gps="git push origin"
+alias gplo="git pull origin"
+alias gpso="git push origin"
 
 # lazygit alias
 alias lg="lazygit"
